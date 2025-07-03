@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compatto - Luxury Furnishing</title>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif; /* A clean sans-serif for body */
+            margin: 0;
+            background-color: #f8f8f8; /* Light neutral background */
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            position: sticky;
+            top:0;
+            z-index:1000;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background-color: snow;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+        }
+
+        .header .logo {
+            font-family: 'Playfair Display', serif; /* Elegant serif for logo */
+            font-size: 32px;
+            font-weight: bold;
+            color: #333; /* Dark almost black */
+            text-decoration: none;
+        }
+
+        .header .nav-links {
+            display: flex;
+            gap: 45px;
+        }
+
+        .header .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 16px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .header .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #a08c7b; /* Accent color from design */
+            transition: width 0.3s ease;
+        }
+
+        .header .nav-links a:hover::after,
+        .header .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .header .icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .header .icons img {
+            width: 22px;
+            height: 22px;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 700px; /* Large hero section */
+            background-color: #e0d0c3; /* Placeholder background */
+            display: flex;
+            align-items: flex-end; /* Align content to bottom */
+            justify-content: flex-start; /* Align content to left */
+            padding-left: 80px;
+            padding-bottom: 50px;
+            overflow: hidden;
+            background-image: url('sofas/sofa7.jpg'); /* Example: replace with actual image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            color: #fff; /* Text color over image */
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 10em;
+            color: #f8f8f8;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background-color: #a08c7b; /* Accent button color */
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-button:hover {
+            background-color: #8c7a6a;
+        }
+
+        .about-us-section {
+            padding: 80px 60px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 400px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 450px; /* Fixed height for consistency */
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 400px;
+            text-align: left;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .about-content ul li {
+            font-size: 17px;
+            color: #444;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .about-content ul li::before {
+            content: '✓'; /* Checkmark icon */
+            color: #a08c7b;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .about-content .read-more-button {
+            display: inline-block;
+            background-color: #1a1a1a; /* Dark button */
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .about-content .read-more-button:hover {
+            background-color: #333;
+        }
+
+        .collections-section {
+            background-color: #e0d0c3;
+            padding: 80px 60px;
+            text-align: center;
+        }
+        .products-section {
+            background-color: #8c7a6a;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .collections-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .collections-section p.subtitle {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            line-height: 1.6;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 300px; /* Consistent image height */
+            object-fit: cover;
+            display: block;
+        }
+
+        .collection-info {
+            padding: 25px;
+        }
+
+        .collection-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .collection-info p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .testimonials-section {
+            background-color: white;
+            padding: 80px 60px;
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        .testimonials-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-carousel {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            font-size: 20px;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: #444;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 17px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        .contact-cta-section {
+            background-color: #1a1a1a; /* Dark section */
+            color: #fff;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .contact-cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-cta-section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .contact-button {
+            display: inline-block;
+            background-color: #a08c7b;
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #8c7a6a;
+        }
+
+        .footer {
+            background-color: #1a1a1a; /* Dark footer */
+            color: #bbb;
+            padding: 60px 60px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 220px;
+            max-width: 300px;
+        }
+
+        .footer-column .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .footer-column p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .footer-column .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-column .social-icons img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .footer-column h4 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: #a08c7b;
+        }
+
+        .footer-bottom {
+            background-color: #0d0d0d; /* Even darker for copyright */
+            color: #888;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">COMPATTO</a>
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#product">Products</a>
+            <a href="#collection">Collections</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="icons">
+            <img src="https://via.placeholder.com/22x22/555/fff?text=S" alt="Search icon">
+            <img src="https://via.placeholder.com/22x22/555/fff?text=C" alt="Cart icon">
+        </div>
+    </header>
+
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1>Elegance for <br>Every Space.</h1>
+            <p>Discover timeless designs and superior craftsmanship to elevate your home.</p>
+            <a href="#collection" class="hero-button">Explore Collections</a>
+        </div>
+    </section>
+
+    <section class="about-us-section" id="about">
+        <div class="about-image">
+            <img src="sofas/sofa1.jpg" alt="Elegant Interior">
+        </div>
+        <div class="about-content">
+            <h2>About Our Craftsmanship</h2>
+            <p>Compatto is dedicated to creating exquisite furniture pieces that blend aesthetic beauty with functional design. We believe that true luxury lies in the details, quality materials, and a commitment to sustainable practices.</p>
+            <ul>
+                <li>Handcrafted with precision</li>
+                <li>Sustainable and ethically sourced materials</li>
+                <li>Customizable designs to fit your vision</li>
+            </ul>
+            <a href="#" class="read-more-button">Read Our Story</a>
+        </div>
+    </section>
+
+<!---section products-->
+<section class="products-section" id="product">
+            <h2>Our Products</h2>
+        <div class="collection-grid">
+            <div class="collection-card">
+                <img src="sofas/sofa5.jpg" alt="Modern Minimalist Collection">
+                <div class="collection-info">
+                    <h3>Product 1</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa6.jpg" alt="Classic Revival Collection">
+                <div class="collection-info">
+                    <h3>Product 2</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa7.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Product 3</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa8.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Product 4</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa9.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Product 5</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa10.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Product 6</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa11.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Product 7</h3>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa12.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Product 8</h3>
+                </div>
+            </div>
+        </div>
+</section>
+    <section class="collections-section" id="collection">
+        <h2>Our Exclusive Collections</h2>
+        <p class="subtitle">Browse through our meticulously curated collections, each designed to bring distinct character and sophistication to your living spaces.</p>
+        <div class="collection-grid">
+            <div class="collection-card">
+                <img src="sofas/sofa2.jpg" alt="Modern Minimalist Collection">
+                <div class="collection-info">
+                    <h3>Modern Minimalist</h3>
+                    <p>Clean lines and understated elegance for the contemporary home.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa3.jpg" alt="Classic Revival Collection">
+                <div class="collection-info">
+                    <h3>Classic Revival</h3>
+                    <p>Timeless pieces that evoke a sense of heritage and grandeur.</p>
+                </div>
+            </div>
+            <div class="collection-card">
+                <img src="sofas/sofa4.jpg" alt="Artisanal Craft Collection">
+                <div class="collection-info">
+                    <h3>Artisanal Craft</h3>
+                    <p>Unique, handcrafted items that tell a story of artistry and passion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="testimonials-section" id="blog">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-item">
+                "The furniture from Compatto transformed our living room into a sanctuary. The quality is unmatched, and the design is simply breathtaking. Highly recommend!"
+            </div>
+            <div class="testimonial-author">— Sophia M.</div>
+            </div>
+    </section>
+
+    <section class="contact-cta-section" id="contact">
+        <h2>Ready to Redefine Your Space?</h2>
+        <p>Our team of design experts is ready to assist you in selecting the perfect pieces for your home.</p>
+        <a href="#" class="contact-button">Schedule a Consultation</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-column">
+            <a href="#" class="logo">COMPATTO</a>
+            <p>Curating exceptional furniture for discerning tastes. Elevating interiors with unparalleled style and quality.</p>
+            <div class="social-icons">
+                <img src="https://via.placeholder.com/28x28/bbb/1a1a1a?text=F" alt="Facebook">
+                <img src="https://via.placeholder.com/28x28/bbb/1a1a1a?text=I" alt="Instagram">
+                <img src="https://via.placeholder.com/28x28/bbb/1a1a1a?text=P" alt="Pinterest">
+                <img src="https://via.placeholder.com/28x28/bbb/1a1a1a?text=L" alt="LinkedIn">
+            </div>
+        </div>
+        <div class="footer-column">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Shipping & Delivery</a></li>
+                <li><a href="#">Returns & Exchanges</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h4>Contact Us</h4>
+            <p>123 Km4 , darjiinka</p>
+            <p>Email: info@compatto.com</p>
+            <p>Phone: +252 61*******</p>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        &copy; 2025 Compatto. All rights reserved. | ryan cashara | <a href="#">Website by Compatto Design</a>
+    </div>
+
+</body>
+</html>
